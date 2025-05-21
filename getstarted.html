@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - GYMPACT</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: #121212;
+    }
+
+    .navbar {
+        position: absolute;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .text-head {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 42px;
+        color: white;
+        margin: 10px 36px;
+    }
+
+    .text-italic {
+        font-style: italic;
+    }
+
+    .navbar-menu {
+        display: flex;
+        gap: 24px;
+    }
+
+    .cta-button {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 16px;
+        padding: 16px 32px;
+        border: none;
+        cursor: pointer;
+        background-color: rgba(238, 87, 66, 1);
+        color: white;
+        border-radius: 2px;
+        transition-duration: 300ms;
+        margin-right: 36px;
+    }
+
+    .cta-button:hover {
+        background-color: white;
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 0px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: red;
+        border-radius: 5px;
+    }
+
+    /* Style The Dropdown Button */
+    .dropbtn {
+        color: white;
+        font-size: 16px;
+        padding: 16px;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        transition-duration: 300ms;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        transition-duration: 300ms;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropbtn:hover {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* FOR THIS PAGE */
+    /* CSS Home Page */
+    .head-section {
+        background-color: #121212;
+        margin: 36px 64px;
+        letter-spacing: 2px;
+    }
+
+    .head-section p {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 24px;
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .head-section h1 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 42px;
+        color: white;
+    }
+
+    .form-section {
+        background-color: #121212;
+        margin: 36px 64px;
+    }
+
+    .form {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 10px;
+        align-items: top;
+    }
+
+    .form-label {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: white;
+        font-size: 24px;
+    }
+
+    .form-input {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .input {
+        padding: 14px;
+        background-color: rgba(238, 87, 66, 0.1);
+        width: 300px;
+        border: none;
+        color: white;
+    }
+
+    .input::placeholder {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .input:focus {
+        outline-color: rgba(238, 87, 66, 1);
+        border-radius: 0px;
+    }
+
+    .input-select {
+        padding: 14px;
+        background-color: rgba(238, 87, 66, 0.1);
+        width: 300px;
+        border: none;
+        color: white;
+    }
+
+    .input-select::placeholder {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .input-select:focus {
+        outline-color: rgba(238, 87, 66, 1);
+        border-radius: 0px;
+    }
+
+    .input-select option {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .input-select .disabled {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    hr {
+        margin: 20px 0;
+        grid-column: span 2;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Style for the checkbox */
+    .checkbox {
+        width: 24px;
+        /* Set the size of the checkbox */
+        height: 24px;
+        /* Same as width to make it square */
+        background-color: rgba(0, 0, 0, 0.1);
+        /* Background color */
+        border: 1px solid #ccc;
+        /* Optional border for better visibility */
+        border-radius: 0px;
+        /* Optional rounded corners */
+        appearance: none;
+        /* Removes the default styling of the checkbox */
+        -webkit-appearance: none;
+        /* For Safari */
+        cursor: pointer;
+        /* Adds a pointer cursor */
+    }
+
+    /* Styling when the checkbox is checked */
+    .checkbox:checked {
+        background-color: rgba(238, 87, 66, 1);
+        /* Change background color when checked */
+        border: 2px solid rgba(238, 87, 66, 1);
+        /* Optional border for checked state */
+        border-radius: 0px;
+        /* Optional rounded corners */
+    }
+
+    .label {
+        font-family: sans-serif;
+        font-weight: bold;
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .join-button {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 20px;
+        padding: 16px 40px;
+        border: none;
+        cursor: pointer;
+        background-color: rgba(238, 87, 66, 1);
+        color: white;
+        border-radius: 5px;
+        transition-duration: 300ms;
+        margin-top: 20px;
+        border: 1px solid transparent;
+    }
+
+    .join-button:hover {
+        background-color: white;
+        ;
+        color: rgba(238, 87, 66, 1);
+        border: 1px solid rgba(238, 87, 66, 1);
+    }
+
+    .image-section {
+        background-image: url('image/getstarted_img.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 360px;
+    }
+
+    /* Footer CSS */
+    .footer-container {
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 10px;
+    }
+
+    .footer {
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .footer-menu {
+        display: flex;
+        gap: 24px;
+        margin-right: 36px;
+        align-items: center;
+    }
+
+    .footer-menu a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .footer-menu a:hover {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .footer-desc {
+        color: white;
+        font-family: sans-serif;
+        margin-left: 36px;
+    }
+
+    .footer-desc p {
+        letter-spacing: 2px;
+        font-size: 12px;
+    }
+
+    .divider {
+        margin: 20px 35px;
+    }
+
+    .copyright-container
+    {
+        color: gray;
+        font-family: sans-serif;
+        text-align: end;
+        margin-right: 36px;
+    }
+
+    .copyright-container p {
+        letter-spacing: 2px;
+        font-size: 12px;
+    }
+
+    .back-to-top-container {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .back-to-top {
+        color: rgba(238, 87, 66, 1);
+    }
+    @media screen and (max-width: 800px) {
+        
+        .navbar {
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .text-head {
+            margin: 10px 10px;
+        }
+        
+        .cta-button {
+            margin-right: 10px;
+            text-align: center;
+        }
+        
+        .navbar-menu {
+            gap: 10px;
+        }
+
+        .footer {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        /* ADDITIONAL RESPONSIVE CSS HERE */
+        
+        .form {
+            /* display: none; */
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .form-input {
+            flex-wrap: wrap;
+        }
+        hr {
+            display: none;
+        }
+    }
+</style>
+
+<body>
+    <nav>
+        <div class="navbar" id="navbar">
+            <div class="text-head text-italic">
+                GYMPACT
+            </div>
+            <div class="navbar-menu">
+                <a class="dropbtn" style="text-decoration: none;" href="index.html">HOME</a>
+                <div class="dropdown">
+                    <button class="dropbtn">TRAINER</button>
+                    <div class="dropdown-content">
+                        <a href="personaltrainer2.html">Trainer</a>
+                        <a href="iqbal.html">Founder</a>
+                        <a href="nafan.html">Founder</a>
+                        <a href="satria.html">Founder</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">KELAS</button>
+                    <div class="dropdown-content">
+                        <a href="kelasbodybuilding.html">Kelas Bodybuilding</a>
+                        <a href="kelasyoga.html">Kelas Yoga</a>
+                        <a href="kelaspowerlifting.html">Kelas Powerlifting</a>
+                        <a href="kelasboxing.html">Kelas Boxing</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">EVENT</button>
+                    <div class="dropdown-content">
+                        <a href="Event.html">Event </a>
+                        <a href="event1.html">Event Anual Fitness</a>
+                        <a href="event2.html">Event Monster Of Punch</a>
+                        <a href="event3.html">Event Powerlifting meet</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">GALLERY</button>
+                    <div class="dropdown-content">
+                        <a href="gallery1.html"> Costumer </a>
+                        <a href="gallery2.html">Transformasi Client </a>
+                        <a href="gallery3.html"> Program </a>
+                        <a href="intrukstur.html"> instuctor </a>
+                    </div>
+                </div>
+
+                <a class="cta-button" style="text-decoration: none;" href="getstarted.html">GET STARTED</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- THIS PAGE -->
+    <!-- Home Section -->
+    <div class="image-section">
+
+    </div>
+    <div class="head-section">
+        <p>Beritahu Kami</p>
+        <h1 class="">Tentang Dirimu</h1>
+    </div>
+    <div class="form-section">
+        <form action="">
+            <div class="form">
+                <div class="form-label">
+                    Detail Personal
+                </div>
+                <div class="form-input">
+                    <input class="input" type="text" placeholder="Nama Depan">
+                    <input class="input" type="text" placeholder="Nama Belakang">
+                    <select name="gender" class="input-select" id="gender">
+                        <option value="" class="disabled" selected disabled>Jenis Kelamin</option>
+                        <option value="male">Laki-laki</option>
+                        <option value="female">Perempuan</option>
+                    </select>
+                </div>
+                <hr>
+                <div class="form-label">
+                    Detail Kontak
+                </div>
+                <div class="form-input">
+                    <input class="input" type="email" placeholder="Email">
+                    <input class="input" type="number" placeholder="Nomor Telepon">
+                    <div class="checkbox-container">
+                        <input type="checkbox" class="checkbox" id="email_subscription" name="email_subscription"
+                            value="Yes">
+                        <label class="label" for="email_subscription"> Dapatkan Informasi Melalui Email</label>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="button-container">
+                <button class="join-button">DAFTAR</button>
+            </div>
+        </form>
+    </div>
+    <!-- Footer Section -->
+    <footer class="footer-container">
+        <div class="footer">
+            <div class="text-head text-italic">
+                GYMPACT
+            </div>
+            <div class="footer-menu">
+                <a href="">Privacy Policy</a>
+                <a href="">Terms of Use</a>
+                <a href="">Contact Us</a>
+                <a href="">About Us</a>
+                <div class="back-to-top-container">
+                    <a href="#navbar" class="back-to-top"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-desc">
+            <p class="">Bangun Kekuatanmu,<br> Raih Impian Bersama Kami</p>
+        </div>
+        <hr class="divider">
+        <div class="copyright-container">
+            <p class="copyright">Copyright &copy; 2023 GYMPACT</p>
+        </div>
+    </footer>
+</body>
+
+</html>

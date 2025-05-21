@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Event - GYMPACT</title>
+    <style>
+
+    html {
+            scroll-behavior: smooth;
+        }
+    .navbar {
+        position: absolute;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .text-head {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 42px;
+        color: white;
+        margin: 10px 36px;
+    }
+
+    .text-italic {
+        font-style: italic;
+    }
+
+    .navbar-menu {
+        display: flex;
+        gap: 24px;
+    }
+
+    .cta-button {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 16px;
+        padding: 16px 32px;
+        border: none;
+        cursor: pointer;
+        background-color: rgba(238, 87, 66, 1);
+        color: white;
+        border-radius: 2px;
+        transition-duration: 300ms;
+        margin-right: 36px;
+    }
+
+    .cta-button:hover {
+        background-color: white;
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 0px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: red;
+        border-radius: 5px;
+    }
+
+    /* Style The Dropdown Button */
+    .dropbtn {
+        color: white;
+        font-size: 16px;
+        padding: 16px;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        transition-duration: 300ms;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        transition-duration: 300ms; 
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropbtn:hover {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Footer CSS */
+    .footer-container {
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 10px;
+    }
+
+    .footer {
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .footer-menu {
+        display: flex;
+        gap: 24px;
+        margin-right: 36px;
+        align-items: center;
+    }
+
+    .footer-menu a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .footer-menu a:hover {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .footer-desc {
+        color: white;
+        font-family: sans-serif;
+        margin-left: 36px;
+    }
+
+    .footer-desc p {
+        letter-spacing: 2px;
+        font-size: 12px;
+    }
+
+    .divider {
+        margin: 20px 35px;
+    }
+
+    .copyright-container
+    {
+        color: gray;
+        font-family: sans-serif;
+        text-align: end;
+        margin-right: 36px;
+    }
+
+    .copyright-container p {
+        letter-spacing: 2px;
+        font-size: 12px;
+    }
+
+    .back-to-top-container {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .back-to-top {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    @media screen and (max-width: 800px) {
+        .navbar {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .text-head {
+            margin: 10px 10px;
+        }
+        
+        .cta-button {
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .navbar-menu {
+            gap: 10px;
+        }
+
+
+        .home-section {
+            width: 100%;
+            background-image: url(image/home_placeholder.webp);
+            background-size: cover;
+            background-position: top;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0, 0.5);
+        }
+
+        .footer {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        /* ADDITIONAL RESPONSIVE CSS HERE */
+        
+    }
+        
+        /* Resetting default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            background-color: black;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Event section layout */
+        .event-section {
+            background-color: black;
+            color: white;
+            padding: 50px;
+            flex: 1;
+        }
+
+        /* Event section title styling */
+        .event-section h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            letter-spacing: 5px;
+            color: rgba(238, 87, 66, 1);
+            text-align: center;
+            margin: 90px 0 60px;
+            margin-bottom: 30px;
+        }
+
+        /* Event cards container */
+        .event-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* Individual event card */
+        .event-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Event image styling */
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Event details styling */
+        .event-card h3 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgba(238, 87, 66, 1);
+            margin: 10px 0;
+        }
+
+        .event-card p {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin: 0 10px 10px;
+            color: white;
+        }
+
+        /* View details button */
+        .details-button {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            background-color: rgba(238, 87, 66, 1);
+            color: white;
+            border-radius: 5px;
+            transition-duration: 300ms;
+            margin-bottom: 20px;
+        }
+
+        /* Hover effect for button */
+        .details-button:hover {
+            background-color: white;
+            color: rgba(238, 87, 66, 1);
+        }
+
+        /* Subheading Styling */
+    .subheading {
+    font-family: 'Arial Narrow Bold', Impact, Haettenschweiler, sans-serif;
+    color: rgba(238, 87, 66, 1);
+    text-align: center;
+    font-size: 35px;
+    margin-top: 40px; /* Memberikan jarak dengan event cards */
+    letter-spacing: 2px;
+    line-height: 1.5;
+    }
+
+        /* Efek melayang pada card */
+    .event-card {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Menambahkan transisi */
+    }
+
+    /* Efek melayang saat cursor di atas card */
+    .event-card:hover {
+        transform: translateY(-10px); /* Mengangkat card sedikit */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Menambah bayangan untuk efek melayang */
+    }
+
+    /* CSS Home Page */
+    .home-section {
+        width: 100%;
+        background-image: url(image/powerlifting.webp);
+        background-size: cover;
+        background-position: top;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0, 0.5);
+    }
+
+    .home-text {
+        color: white;
+        padding: 24px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .home-text h1 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 5px;
+    }
+
+    .home-text h1 span {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .home-text p {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        letter-spacing: 2px;
+    }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar" id="navbar">
+            <div class="text-head text-italic">
+                GYMPACT
+            </div>
+            <div class="navbar-menu">
+                <a class="dropbtn" style="text-decoration: none;" href="index.html">HOME</a>
+                <div class="dropdown">
+                    <button class="dropbtn">TRAINER</button>
+                    <div class="dropdown-content">
+                        <a href="personaltrainer2.html">Trainer</a>
+                        <a href="iqbal.html">Founder</a>
+                        <a href="nafan.html">Founder</a>
+                        <a href="satria.html">Founder</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">KELAS</button>
+                    <div class="dropdown-content">
+                        <a href="kelasbodybuilding.html">Kelas Bodybuilding</a>
+                        <a href="kelasyoga.html">Kelas Yoga</a>
+                        <a href="kelaspowerlifting.html">Kelas Powerlifting</a>
+                        <a href="kelasboxing.html">Kelas Boxing</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">EVENT</button>
+                    <div class="dropdown-content">
+                        <a href="Event.html">Event </a>
+                        <a href="event1.html">Event Anual Fitness</a>
+                        <a href="event2.html">Event Monster Of Punch</a>
+                        <a href="event3.html">Event Powerlifting meet</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">GALLERY</button>
+                    <div class="dropdown-content">
+                        <a href="gallery1.html"> Costumer </a>
+                        <a href="gallery2.html">Transformasi Client </a>
+                        <a href="gallery3.html"> Program </a>
+                        <a href="intrukstur.html"> instuctor </a>
+                    </div>
+                </div>
+
+                <a class="cta-button" style="text-decoration: none;" href="getstarted.html">GET STARTED</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Highlight Event Section -->
+    <div class="home-section">
+        <div class="home-text">
+            <h1 class="">Event <span></span><span>GYM</span></h1>
+        </div>
+    </div>
+    <div class="event-section">
+        <h1>OUR UPCOMING EVENTS!</h1>
+        <div class="event-cards">
+            <!-- Event 1 -->
+            <div class="event-card">
+                <img src="image/gym-event.webp" alt="Event 1">
+                <h3>Annual Fitness Challenge</h3>
+                <p>Event dimana semua anggota gym dapat mengakrabkan diri satu sama lain,Jangan ketinggalan yaaa!!.</p>
+                <a href="event1.html"><button class="details-button">View Details</button></a>
+            </div>
+            <!-- Event 2 -->
+            <div class="event-card">
+                <img src="image/monsterofpunch.webp" alt="Event 2">
+                <h3>Boxing Tournament</h3>
+                <p>Tunjukkan skills mu dengan melawan lawan yang kuat di dalam ring! dan menangkan hadiah Jutaan rupiah!.</p>
+                <a href="event2.html"><button class="details-button">View Details</button></a>
+            </div>
+            <!-- Event 3 -->
+            <div class="event-card">
+                <img src="image/powerlifting.webp" alt="Event 3">
+                <h3>Powerlifting Meet</h3>
+                <p>Kompetisi dimana yang kuat akan menang, jangan ketinggalan yaaa! karena hadiahnya Jutaan rupiah.</p>
+                <A href="event3.html"><button class="details-button">View Details</button></A>
+            </div>
+            
+        </div>
+    <p class="subheading">"Semakin Sehat dan Kuat bersama kami Di GYMPACT"</p>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer-container">
+        <div class="footer">
+            <div class="text-head text-italic">
+                GYMPACT
+            </div>
+            <div class="footer-menu">
+                <a href="">Privacy Policy</a>
+                <a href="">Terms of Use</a>
+                <a href="">Contact Us</a>
+                <a href="">About Us</a>
+                <div class="back-to-top-container">
+                    <a href="#navbar" class="back-to-top"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+                      </svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-desc">
+            <p class="">Bangun Kekuatanmu,<br> Raih Impian Bersama Kami</p>
+        </div>
+        <hr class="divider">
+        <div class="copyright-container">
+            <p class="copyright">Copyright &copy; 2023 GYMPACT</p>
+        </div>
+    </footer>
+</body>
+
+</html>

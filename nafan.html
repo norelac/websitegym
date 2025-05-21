@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Saya</title>
+  <style>
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .title {
+      margin-bottom: 20px;
+      font-size: 36px;
+      font-weight: bold;
+      color: #ff5722;
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 20px
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      background-color: #1e1e1e;
+      border-radius: 20px;
+      padding: 50px;
+      max-width: 1200px;
+      width: 90%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .photo {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-right: 30px;
+    }
+
+    .photo img {
+      border-radius: 50%;
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border: 5px solid #ff5722;
+    }
+
+    .about {
+      flex: 2;
+    }
+
+    .about h1 {
+      color: #ff5722;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      margin: 15px 0;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin-top: 20px;
+      background-color: #ff5722;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #e64a19;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .text-head {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 42px;
+        color: white;
+        margin: 10px 36px;
+    }
+
+    .navbar-menu {
+        display: flex;
+        gap: 24px;
+    }
+    .dropbtn {
+        color: white;
+        font-size: 16px;
+        padding: 16px;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        transition-duration: 300ms;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        transition-duration: 300ms; 
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .cta-button {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 16px;
+        padding: 16px 32px;
+        border: none;
+        cursor: pointer;
+        background-color: rgba(238, 87, 66, 1);
+        color: white;
+        border-radius: 2px;
+        transition-duration: 300ms;
+        margin-right: 36px;
+    }
+
+    .cta-button:hover {
+        background-color: white;
+        color: rgba(238, 87, 66, 1);
+    }
+
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropbtn:hover {
+        color: rgba(238, 87, 66, 1);
+    }
+    @media screen and (max-width: 800px) {
+        .navbar {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .text-head {
+            margin: 10px 10px;
+        }
+        
+        .cta-button {
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .navbar-menu {
+            gap: 10px;
+        }
+
+
+        /* ADDITIONAL RESPONSIVE CSS HERE */
+        
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="navbar" id="navbar">
+        <div class="text-head text-italic">
+            GYMPACT
+        </div>
+        <div class="navbar-menu">
+            <a class="dropbtn" style="text-decoration: none;" href="index.html">HOME</a>
+            <div class="dropdown">
+                <button class="dropbtn">TRAINER</button>
+                <div class="dropdown-content">
+                    <a href="personaltrainer2.html">Trainer</a>
+                    <a href="iqbal.html">Founder</a>
+                    <a href="nafan.html">Founder</a>
+                    <a href="satria.html">Founder</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">KELAS</button>
+                <div class="dropdown-content">
+                    <a href="kelasbodybuilding.html">Kelas Bodybuilding</a>
+                    <a href="kelasyoga.html">Kelas Yoga</a>
+                    <a href="kelaspowerlifting.html">Kelas Powerlifting</a>
+                    <a href="kelasboxing.html">Kelas Boxing</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">EVENT</button>
+                <div class="dropdown-content">
+                    <a href="Event.html">Event </a>
+                    <a href="event1.html">Event Anual Fitness</a>
+                    <a href="event2.html">Event Monster Of Punch</a>
+                    <a href="event3.html">Event Powerlifting meet</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">GALLERY</button>
+                <div class="dropdown-content">
+                    <a href="gallery1.html"> Costumer </a>
+                    <a href="gallery2.html">Transformasi Client </a>
+                    <a href="gallery3.html"> Program </a>
+                    <a href="intrukstur.html"> instuctor </a>
+                </div>
+            </div>
+
+            <a class="cta-button" style="text-decoration: none;" href="getstarted.html">GET STARTED</a>
+        </div>
+    </div>
+</nav>
+
+  <div class="title">Founder</div>
+  <i><p style="display: block ;">GYMPACT<p></i>
+  <br>
+  <div class="container">
+    <div class="photo">
+      <img src="image/nafan.webp" alt="Foto Saya">
+    </div>
+    <div class="about">
+      <h1>Tentang Saya</h1>
+      <p>Halo, nama saya Naf'an Nur'alim . Saya adalah seorang mahasiswa Teknik Informatika yang memiliki semangat tinggi dalam dunia teknologi dan pemrograman. Saya selalu berusaha untuk berkembang dan belajar hal-hal baru dalam hidup saya.</p>
+      <p>Saya memiliki minat dalam pengembangan web, data science, dan artificial intelligence. Dengan kombinasi keahlian saya, saya berharap dapat memberikan kontribusi positif di dunia teknologi.</p>
+      <a href="mailto:email@example.com" class="button">Hubungi Saya</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Fitness Challenge - GYMPACT</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Navbar Styles */
+        .navbar {
+            position: absolute;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .text-head {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 42px;
+            color: white;
+            margin: 10px 36px;
+        }
+
+        .text-italic {
+            font-style: italic;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 24px;
+        }
+
+        .cta-button {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 16px;
+            padding: 16px 32px;
+            border: none;
+            cursor: pointer;
+            background-color: rgba(238, 87, 66, 1);
+            color: white;
+            border-radius: 2px;
+            transition-duration: 300ms;
+            margin-right: 36px;
+        }
+
+        .cta-button:hover {
+            background-color: white;
+            color: rgba(238, 87, 66, 1);
+        }
+
+        .dropbtn {
+            color: white;
+            font-size: 16px;
+            padding: 16px;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            transition-duration: 300ms;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            transition-duration: 300ms;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: rgba(238, 87, 66, 1);
+        }
+
+        /* Footer CSS */
+        .footer-container {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+        }
+
+        .footer {
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .footer-menu {
+            display: flex;
+            gap: 24px;
+            margin-right: 36px;
+            align-items: center;
+        }
+
+        .footer-menu a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer-menu a:hover {
+            color: rgba(238, 87, 66, 1);
+        }
+
+        .footer-desc {
+            color: white;
+            font-family: sans-serif;
+            margin-left: 36px;
+        }
+
+        .footer-desc p {
+            letter-spacing: 2px;
+            font-size: 12px;
+        }
+
+        .divider {
+            margin: 20px 35px;
+        }
+
+        .copyright-container
+        {
+            color: gray;
+            font-family: sans-serif;
+            text-align: end;
+            margin-right: 36px;
+        }
+
+        .copyright-container p {
+            letter-spacing: 2px;
+            font-size: 12px;
+        }
+
+        .back-to-top-container {
+            color: rgba(238, 87, 66, 1);
+        }
+
+        .back-to-top {
+            color: rgba(238, 87, 66, 1);
+        }
+
+        @media screen and (max-width: 800px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .text-head {
+                margin: 10px 10px;
+            }
+
+            .cta-button {
+                margin-right: 10px;
+                text-align: center;
+            }
+
+            .navbar-menu {
+                gap: 10px;
+            }
+
+            .footer {
+                color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+
+        /* Event Page Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .event-header {
+            background-image: url('image/powerlifting.webp');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .event-header h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 48px;
+            color: rgba(238, 87, 66, 1);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .event-details {
+            padding: 40px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .event-details h2 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgba(238, 87, 66, 1);
+            margin-bottom: 20px;
+        }
+
+        .event-details p {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .event-details .register-button {
+            display: block;
+            text-align: center;
+            background-color: rgba(238, 87, 66, 1);
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .event-details .register-button:hover {
+            background-color: white;
+            color: rgba(238, 87, 66, 1);
+        }
+        
+        /* kategotri styling */
+        
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar" id="navbar">
+            <div class="text-head text-italic">
+                GYMPACT
+            </div>
+            <div class="navbar-menu">
+                <a class="dropbtn" style="text-decoration: none;" href="index.html">HOME</a>
+                <div class="dropdown">
+                    <button class="dropbtn">TRAINER</button>
+                    <div class="dropdown-content">
+                        <a href="personaltrainer2.html">Trainer</a>
+                        <a href="iqbal.html">Founder</a>
+                        <a href="nafan.html">Founder</a>
+                        <a href="satria.html">Founder</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">KELAS</button>
+                    <div class="dropdown-content">
+                        <a href="kelasbodybuilding.html">Kelas Bodybuilding</a>
+                        <a href="kelasyoga.html">Kelas Yoga</a>
+                        <a href="kelaspowerlifting.html">Kelas Powerlifting</a>
+                        <a href="kelasboxing.html">Kelas Boxing</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">EVENT</button>
+                    <div class="dropdown-content">
+                        <a href="Event.html">Event </a>
+                        <a href="event1.html">Event Anual Fitness</a>
+                        <a href="event2.html">Event Monster Of Punch</a>
+                        <a href="event3.html">Event Powerlifting meet</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">GALLERY</button>
+                    <div class="dropdown-content">
+                        <a href="gallery1.html"> Costumer </a>
+                        <a href="gallery2.html">Transformasi Client </a>
+                        <a href="gallery3.html"> Program </a>
+                        <a href="intrukstur.html"> instuctor </a>
+                    </div>
+                </div>
+
+                <a class="cta-button" style="text-decoration: none;" href="getstarted.html">GET STARTED</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Event Header -->
+    <div class="event-header">
+        <h1>Powerlifting Meet</h1>
+    </div>
+
+    <!-- Event Details -->
+    <div class="event-details">
+        <h2>About the Event</h2>
+        <p>
+            Monster of Punch adalah turnamen tinju yang akan menguji kekuatan, ketahanan, dan keterampilan Anda di dalam ring. Acara ini menyajikan tantangan yang seru dengan hadiah jutaan rupiah bagi para pemenang. Bagi Anda yang memiliki semangat juang tinggi dan ingin menunjukkan keahlian tinju terbaik, ini adalah kesempatan emas untuk bersaing dengan para petinju hebat. Jangan lewatkan pengalaman tak terlupakan ini!
+        </p>
+        <p>
+            <strong>Tanggal:</strong>10 April , 2025<br>
+            <strong>Lokasi:</strong> GYMPACT Powerlifting Arena, Surabaya<br>
+            <strong>Waktu:</strong> 08.00 - 18.00 <br>
+            <div class="categories">
+                <h3>Kategori Pertandingan:</h3>
+                <ul>
+                    <li>Kelas Berat (Heavyweight)</li>
+                    <li>Kelas Menengah (Middleweight)</li>
+                    <li>Kelas Ringan (Lightweight)</li>
+                </ul>
+            </div><br>
+            <div class="prizes">
+                <h3>Hadiah:</h3>
+                <ul>
+                    <li>Juara 1: Rp 30.000.000</li>
+                    <li>Juara 2: Rp 15.000.000</li>
+                    <li>Juara 3: Rp 7.500.000</li>
+                </ul>
+            </div>
+        </p>
+        <a href="getstarted.html" class="register-button">Daftar Sekarang</a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer-container">
+        <div class="footer">
+            <div class="text-head text-italic">
+                GYMPACT
+            </div>
+            <div class="footer-menu">
+                <a href="">Privacy Policy</a>
+                <a href="">Terms of Use</a>
+                <a href="">Contact Us</a>
+                <a href="">About Us</a>
+                <div class="back-to-top-container">
+                    <a href="#navbar" class="back-to-top"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+                      </svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-desc">
+            <p class="">Bangun Kekuatanmu,<br> Raih Impian Bersama Kami</p>
+        </div>
+        <hr class="divider">
+        <div class="copyright-container">
+            <p class="copyright">Copyright &copy; 2023 GYMPACT</p>
+        </div>
+    </footer>
+</body>
+
+</html>

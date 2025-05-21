@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Program Gallery</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .container h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .container p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background-color: #111;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .gallery-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-item p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .gallery-item a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .gallery-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 10px;
+            }
+
+            .container h1 {
+                font-size: 28px;
+            }
+
+            .container p {
+                font-size: 16px;
+            }
+
+            .gallery {
+                gap: 15px;
+            }
+
+            .gallery-item {
+                padding: 15px;
+            }
+
+            .gallery-item h3 {
+                font-size: 18px;
+            }
+
+            .gallery-item p {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container h1 {
+                font-size: 24px;
+            }
+
+            .container p {
+                font-size: 14px;
+            }
+
+            .gallery-item h3 {
+                font-size: 16px;
+            }
+
+            .gallery-item p {
+                font-size: 10px;
+            }
+        }
+
+        /* navbar  */
+
+        * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar {
+        position: absolute;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .text-head {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 42px;
+        color: white;
+        margin: 10px 36px;
+    }
+
+    .text-italic {
+        font-style: italic;
+    }
+
+    .navbar-menu {
+        display: flex;
+        gap: 24px;
+    }
+
+    .cta-button {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 16px;
+        padding: 16px 32px;
+        border: none;
+        cursor: pointer;
+        background-color: rgba(238, 87, 66, 1);
+        color: white;
+        border-radius: 2px;
+        transition-duration: 300ms;
+        margin-right: 36px;
+    }
+
+    .cta-button:hover {
+        background-color: white;
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 0px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: red;
+        border-radius: 5px;
+    }
+
+    /* Style The Dropdown Button */
+    .dropbtn {
+        color: white;
+        font-size: 16px;
+        padding: 16px;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        transition-duration: 300ms;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        transition-duration: 300ms; 
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropbtn:hover {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Footer CSS */
+    .footer-container {
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 10px;
+    }
+
+    .footer {
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .footer-menu {
+        display: flex;
+        gap: 24px;
+        margin-right: 36px;
+        align-items: center;
+    }
+
+    .footer-menu a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .footer-menu a:hover {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .footer-desc {
+        color: white;
+        font-family: sans-serif;
+        margin-left: 36px;
+    }
+
+    .footer-desc p {
+        letter-spacing: 2px;
+        font-size: 12px;
+    }
+
+    .divider {
+        margin: 20px 35px;
+    }
+
+    .copyright-container
+    {
+        color: gray;
+        font-family: sans-serif;
+        text-align: end;
+        margin-right: 36px;
+    }
+
+    .copyright-container p {
+        letter-spacing: 2px;
+        font-size: 12px;
+    }
+
+    .back-to-top-container {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .back-to-top {
+        color: rgba(238, 87, 66, 1);
+    }
+
+
+    @media screen and (max-width: 800px) {
+        .navbar {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .text-head {
+            margin: 10px 10px;
+        }
+        
+        .cta-button {
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .navbar-menu {
+            gap: 10px;
+        }
+
+        .footer {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ADDITIONAL RESPONSIVE CSS HERE */
+        
+    }
+
+    /* FOR THIS PAGE */
+    /* CSS Home Page */
+    .home-section {
+        width: 100%;
+        background-image: url(image/powerlifting.webp);
+        background-size: cover;
+        background-position: top;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0, 0.5);
+    }
+
+    .home-text {
+        color: white;
+        padding: 24px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .home-text h1 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 5px;
+    }
+
+    .home-text h1 span {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .home-text p {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        letter-spacing: 2px;
+    }
+
+    </style>
+</head>
+<body>
+
+    <body>
+        <nav>
+            <div class="navbar" id="navbar">
+                <div class="text-head text-italic">
+                    GYMPACT
+                </div>
+                <div class="navbar-menu">
+                    <a class="dropbtn" style="text-decoration: none;" href="index.html">HOME</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">TRAINER</button>
+                        <div class="dropdown-content">
+                            <a href="personaltrainer2.html">Trainer</a>
+                            <a href="iqbal.html">Founder</a>
+                            <a href="nafan.html">Founder</a>
+                            <a href="satria.html">Founder</a>
+                        </div>
+                    </div>
+    
+                    <div class="dropdown">
+                        <button class="dropbtn">KELAS</button>
+                        <div class="dropdown-content">
+                            <a href="kelasbodybuilding.html">Kelas Bodybuilding</a>
+                            <a href="kelasyoga.html">Kelas Yoga</a>
+                            <a href="kelaspowerlifting.html">Kelas Powerlifting</a>
+                            <a href="kelasboxing.html">Kelas Boxing</a>
+                        </div>
+                    </div>
+    
+                    <div class="dropdown">
+                        <button class="dropbtn">EVENT</button>
+                        <div class="dropdown-content">
+                            <a href="Event.html">Event </a>
+                            <a href="event1.html">Event Anual Fitness</a>
+                            <a href="event2.html">Event Monster Of Punch</a>
+                            <a href="event3.html">Event Powerlifting meet</a>
+                        </div>
+                    </div>
+    
+                    <div class="dropdown">
+                        <button class="dropbtn">GALLERY</button>
+                        <div class="dropdown-content">
+                            <a href="gallery1.html"> Costumer </a>
+                            <a href="gallery2.html">Transformasi Client </a>
+                            <a href="gallery3.html"> Program </a>
+                            <a href="intrukstur.html"> instuctor </a>
+                        </div>
+                    </div>
+    
+                    <a class="cta-button" style="text-decoration: none;" href="getstarted.html">GET STARTED</a>
+                </div>
+            </div>
+        </nav>
+        <!-- THIS PAGE -->
+        <!-- Home Section -->
+        <div class="home-section">
+            <div class="home-text">
+                <h1 class="">Selamat Datang di <span>GYMPACT</span></h1>
+                <p class="">"Latihan Lebih Fokus, Hasil Maksimal."</p>
+                <p class="">Dapatkan panduan dari pelatih profesional untuk mencapai target kebugaranmu lebih cepat.</p>
+            </div>
+        </div>
+    </body>
+
+    <div class="container">
+        <h1 style="color: rgba(238, 87, 66, 1)  ;">OUR LATEST PROGRAM</h1>
+        <p>To provide adequate knowledge and skills necessary for critical thinking regarding diet and health so the individual can make healthy food choices from an increasingly complex food supply.</p>
+        <br><br>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="image/cardio.webp" alt="Cardio Strength">
+                <h3 style="margin-bottom: auto;">Cardio Strength</h3>
+                <p>The Cardio Strength Classes aim to improve cardiovascular health, inclusive of strength and fitness.</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/yoga.webp" alt="Basic Yoga">
+                <h3>Basic Yoga</h3>
+                <p>This class provides an approach to align, strengthen, and promote flexibility in the body.</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/muscle.webp" alt="Muscle Building">
+                <h3>Muscle Building</h3>
+                <p>Develop routines and exercises that build muscle strength through intense training sessions.</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/pilates.webp" alt="Beginner Pilates">
+                <br>
+                <h3>Beginner Pilates</h3>
+                <p>Pilates is a system of exercise and movement designed to improve strength, flexibility, and posture.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer-container">
+        <div class="footer">
+            <div class="text-head text-italic">
+                GYMPACT
+            </div>
+            <div class="footer-menu">
+                <a href="">Privacy Policy</a>
+                <a href="">Terms of Use</a>
+                <a href="">Contact Us</a>
+                <a href="">About Us</a>
+                <div class="back-to-top-container">
+                    <a href="#navbar" class="back-to-top"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+                      </svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-desc">
+            <p class="">Bangun Kekuatanmu,<br> Raih Impian Bersama Kami</p>
+        </div>
+        <hr class="divider">
+        <div class="copyright-container">
+            <p class="copyright">Copyright &copy; 2023 GYMPACT</p>
+        </div>
+    </footer>
+</body>
+</html>

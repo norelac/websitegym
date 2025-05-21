@@ -1,0 +1,579 @@
+<!-- menambahkan gallery2  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Website</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Mengatur gaya umum untuk body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:   #000000; /* Warna latar belakang abu-abu terang */
+        }
+
+        /* Bagian galeri */
+        .gallery-section {
+            text-align: center;
+            padding: 20px; /* Jarak di sekitar galeri */
+        }
+
+        /* Judul pada bagian galeri */
+        .gallery-section h2 {
+            font-size: 24px; /* Ukuran font judul */
+            margin-bottom: 20px; /* Jarak bawah judul */
+            color: #333; /* Warna teks judul */
+        }
+
+        /* Tata letak grid galeri */
+        .gallery {
+            display: grid; /* Menggunakan grid layout */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Kolom responsif */
+            gap: 20px; /* Jarak antar item galeri */
+            padding: 20px; /* Padding di dalam galeri */
+            justify-content: center; /* Pusatkan item galeri */
+        }
+
+        /* Item galeri individual */
+        .gallery-item {
+            background-color: #0a0a0a; /* Latar belakang putih untuk item galeri */
+            border-radius: 8px; /* Membuat sudut melengkung */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek kedalaman */
+            overflow: hidden; /* Memotong elemen yang keluar dari batas */
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* Tata letak vertikal */
+            align-items: center;
+        }
+
+        /* css hover  */
+        .gallery-item:hover {
+            transform: scale(1.05); /* Perbesar item saat dihover */
+            transition: transform 0.3s; /* Animasi perbesaran */
+        }
+
+        /* Gambar di dalam item galeri */
+        .gallery-item img {
+            width: 250px; /* Gambar mengambil lebar penuh item */
+            height: 300px; /* Tinggi gambar lebih kecil */
+            object-fit: cover; /* Memotong gambar agar sesuai dengan area */
+            display: block; /* Menghilangkan jarak default di bawah gambar */
+        }
+
+        /* Informasi teks di bawah gambar */
+        .gallery-item .info {
+            padding: 10px; /* Jarak di dalam area teks */
+            margin-top: auto; /* Memastikan teks berada di bawah */
+        }
+
+        /* Judul kecil di bawah gambar */
+        .gallery-item .info h3 {
+            margin: 10px 0; /* Jarak atas dan bawah untuk judul kecil */
+            font-size: 18px; /* Ukuran font judul kecil */
+        }
+
+        /* Paragraf deskripsi di bawah gambar */
+        .gallery-item .info p {
+            color: #666; /* Warna teks abu-abu */
+            font-size: 14px; /* Ukuran font deskripsi */
+        }
+
+        /* Bagian header utama */
+
+
+        /* Judul utama pada header */
+        .header h1 {
+            font-size: 3rem; /* Ukuran font besar */
+            color: #fff; /* Warna teks putih */
+            text-transform: uppercase; /* Semua huruf kapital */
+        }
+
+        /* Deskripsi di bawah judul utama */
+        .header p {
+            font-size: 1.2rem; /* Ukuran font deskripsi */
+            color: #fff; /* Warna teks putih */
+            margin-top: 0.5rem; /* Jarak ke atas */
+            text-transform: uppercase; /* Semua huruf kapital */
+            font-weight: 300; /* Ketebalan teks ringan */
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        /* navbar css */
+
+        * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar {
+        position: absolute;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .text-head {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 42px;
+        color: white;
+        margin: 10px 36px;
+    }
+
+    .text-italic {
+        font-style: italic;
+    }
+
+    .navbar-menu {
+        display: flex;
+        gap: 24px;
+    }
+
+    .cta-button {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 16px;
+        padding: 16px 32px;
+        border: none;
+        cursor: pointer;
+        background-color: rgba(238, 87, 66, 1);
+        color: white;
+        border-radius: 2px;
+        transition-duration: 300ms;
+        margin-right: 36px;
+    }
+
+    .cta-button:hover {
+        background-color: white;
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 0px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: red;
+        border-radius: 5px;
+    }
+
+    /* Style The Dropdown Button */
+    .dropbtn {
+        color: white;
+        font-size: 16px;
+        padding: 16px;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        transition-duration: 300ms;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        transition-duration: 300ms; 
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropbtn:hover {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    /* Footer CSS */
+    .footer-container {
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 10px;
+    }
+
+    .footer {
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .footer-menu {
+        display: flex;
+        gap: 24px;
+        margin-right: 36px;
+        align-items: center;
+    }
+
+    .footer-menu a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .footer-menu a:hover {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .footer-desc {
+        color: white;
+        font-family: sans-serif;
+        margin-left: 36px;
+    }
+
+    .footer-desc p {
+        letter-spacing: 2px;
+        font-size: 12px;
+    }
+
+    .divider {
+        margin: 20px 35px;
+    }
+
+    .copyright-container
+    {
+        color: gray;
+        font-family: sans-serif;
+        text-align: end;
+        margin-right: 36px;
+    }
+
+    .copyright-container p {
+        letter-spacing: 2px;
+        font-size: 12px;
+    }
+
+    .back-to-top-container {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .back-to-top {
+        color: rgba(238, 87, 66, 1);
+    }
+
+
+    @media screen and (max-width: 800px) {
+        .navbar {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .text-head {
+            margin: 10px 10px;
+        }
+        
+        .cta-button {
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .navbar-menu {
+            gap: 10px;
+        }
+
+        .footer {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ADDITIONAL RESPONSIVE CSS HERE */
+        
+    }
+
+    /* FOR THIS PAGE */
+    /* CSS Home Page */
+    .home-section {
+        width: 100%;
+        background-image: url(image/powerlifting.webp);
+        background-size: cover;
+        background-position: top;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0, 0.5);
+    }
+
+    .home-text {
+        color: white;
+        padding: 24px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .home-text h1 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 5px;
+    }
+
+    .home-text h1 span {
+        color: rgba(238, 87, 66, 1);
+    }
+
+    .home-text p {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        letter-spacing: 2px;
+    }
+    .gallery-item h3 {
+        color: #f1f1f1;
+    }
+    </style>
+</head>
+<body>
+<!-- navbar -->
+    <body>
+        <nav>
+            <div class="navbar" id="navbar">
+                <div class="text-head text-italic">
+                    GYMPACT
+                </div>
+                <div class="navbar-menu">
+                    <a class="dropbtn" style="text-decoration: none;" href="index.html">HOME</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">TRAINER</button>
+                        <div class="dropdown-content">
+                            <a href="personaltrainer2.html">Trainer</a>
+                            <a href="iqbal.html">Founder</a>
+                            <a href="nafan.html">Founder</a>
+                            <a href="satria.html">Founder</a>
+                        </div>
+                    </div>
+    
+                    <div class="dropdown">
+                        <button class="dropbtn">KELAS</button>
+                        <div class="dropdown-content">
+                            <a href="kelasbodybuilding.html">Kelas Bodybuilding</a>
+                            <a href="kelasyoga.html">Kelas Yoga</a>
+                            <a href="kelaspowerlifting.html">Kelas Powerlifting</a>
+                            <a href="kelasboxing.html">Kelas Boxing</a>
+                        </div>
+                    </div>
+    
+                    <div class="dropdown">
+                        <button class="dropbtn">EVENT</button>
+                        <div class="dropdown-content">
+                            <a href="Event.html">Event </a>
+                            <a href="event1.html">Event Anual Fitness</a>
+                            <a href="event2.html">Event Monster Of Punch</a>
+                            <a href="event3.html">Event Powerlifting meet</a>
+                        </div>
+                    </div>
+    
+                    <div class="dropdown">
+                        <button class="dropbtn">GALLERY</button>
+                        <div class="dropdown-content">
+                            <a href="gallery1.html"> Costumer </a>
+                            <a href="gallery2.html">Transformasi Client </a>
+                            <a href="gallery3.html"> Program </a>
+                            <a href="intrukstur.html"> instuctor </a>
+                        </div>
+                    </div>
+    
+                    <a class="cta-button" style="text-decoration: none;" href="getstarted.html">GET STARTED</a>
+                </div>
+            </div>
+        </nav>
+        <!-- THIS PAGE -->
+        <!-- Home Section -->
+        <div class="home-section">
+            <div class="home-text">
+                <h1 class="">Selamat Datang di <span>GYMPACT</span></h1>
+                <p class="">"Latihan Lebih Fokus, Hasil Maksimal."</p>
+                <p class="">Dapatkan panduan dari pelatih profesional untuk mencapai target kebugaranmu lebih cepat.</p>
+            </div>
+        </div>
+    </body>
+
+    <!-- Bagian galeri -->
+    <section class="gallery-section">
+        <h2 style="color:  rgba(238, 87, 66, 1);">Transformasi Client</h2> <!-- Judul bagian galeri -->
+        <div class="gallery">
+            <!-- Item galeri pertama -->
+            <div class="gallery-item">
+                <img src="image/gambar1.webp" alt="Before and After 1"> <!-- Gambar 1 -->
+                <div class="info">
+                    <h3>53 Weeks - Age: 50s</h3> <!-- Judul kecil -->
+                    <p>Incredible transformation journey.</p> <!-- Deskripsi -->
+                </div>
+            </div>
+
+            <!-- Item galeri kedua -->
+            <div class="gallery-item">
+                <img src="image/gambar2.webp" alt="Before and After 2"> <!-- Gambar 2 -->
+                <div class="info">
+                    <h3>11 Weeks - Age: 30s</h3> <!-- Judul kecil -->
+                    <p>Amazing results in just 11 weeks.</p> <!-- Deskripsi -->
+                </div>
+            </div>
+
+            <!-- Item galeri ketiga -->
+            <div class="gallery-item">
+                <img src="image/gambar3.webp" alt="Before and After 3"> <!-- Gambar 3 -->
+                <div class="info">
+                    <h3>22 Weeks - Age: 40s</h3> <!-- Judul kecil -->
+                    <p>Dedicated effort leads to success.</p> <!-- Deskripsi -->
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/gambar4.webp" alt="Before and After 1"> <!-- Gambar 1 -->
+                <div class="info">
+                    <h3>53 Weeks - Age: 50s</h3> <!-- Judul kecil -->
+                    <p>Incredible transformation journey.</p> <!-- Deskripsi -->
+                </div>
+            </div>
+
+            <!-- Item galeri kedua -->
+            <div class="gallery-item">
+                <img src="image/gambar5.webp" alt="Before and After 2"> <!-- Gambar 2 -->
+                <div class="info">
+                    <h3>11 Weeks - Age: 30s</h3> <!-- Judul kecil -->
+                    <p>Amazing results in just 11 weeks.</p> <!-- Deskripsi -->
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/gambar6.webp" alt="Before and After 2"> <!-- Gambar 2 -->
+                <div class="info">
+                    <h3>11 Weeks - Age: 30s</h3> <!-- Judul kecil -->
+                    <p>Amazing results in just 11 weeks.</p> <!-- Deskripsi -->
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/gambar7.webp" alt="Before and After 2"> <!-- Gambar 2 -->
+                <div class="info">
+                    <h3>11 Weeks - Age: 30s</h3> <!-- Judul kecil -->
+                    <p>Amazing results in just 11 weeks.</p> <!-- Deskripsi -->
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/gambar8.webp" alt="Before and After 2"> <!-- Gambar 2 -->
+                <div class="info">
+                    <h3>11 Weeks - Age: 30s</h3> <!-- Judul kecil -->
+                    <p>Amazing results in just 11 weeks.</p> <!-- Deskripsi -->
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/gambar9.webp" alt="Before and After 2"> <!-- Gambar 2 -->
+                <div class="info">
+                    <h3>11 Weeks - Age: 30s</h3> <!-- Judul kecil -->
+                    <p>Amazing results in just 11 weeks.</p> <!-- Deskripsi -->
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/gambar10.webp" alt="Before and After 2"> <!-- Gambar 2 -->
+                <div class="info">
+                    <h3>11 Weeks - Age: 30s</h3> <!-- Judul kecil -->
+                    <p>Amazing results in just 11 weeks.</p> <!-- Deskripsi -->
+                </div>
+            </div>
+
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer-container">
+        <div class="footer">
+            <div class="text-head text-italic">
+                GYMPACT
+            </div>
+            <div class="footer-menu">
+                <a href="">Privacy Policy</a>
+                <a href="">Terms of Use</a>
+                <a href="">Contact Us</a>
+                <a href="">About Us</a>
+                <div class="back-to-top-container">
+                    <a href="#navbar" class="back-to-top"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+                      </svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-desc">
+            <p class="">Bangun Kekuatanmu,<br> Raih Impian Bersama Kami</p>
+        </div>
+        <hr class="divider">
+        <div class="copyright-container">
+            <p class="copyright">Copyright &copy; 2023 GYMPACT</p>
+        </div>
+    </footer>
+</body>
+</html>
